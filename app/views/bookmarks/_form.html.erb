@@ -27,13 +27,13 @@
 
   <div class="field">
     <%= form.label "テスト" %>
-    <%= form.check_box :complete %>
+    <%= form.check_box :check %>
   </div>
 
   <div class="field">
-      <%= form.radio_button :ans, :true %>
+      <%= form.radio_button :radio, "わかる" %>
       <%= form.label :ans, "わかる", {value: :true, style: "display: inline-block;"} %>
-      <%= form.radio_button :ans, :false ,:checked=>'checked'%>
+      <%= form.radio_button :radio, "わからない" %>
       <%= form.label :ans, "わからない", {value: :true, style: "display: inline-block;"} %>
   </div>
 <% end %>
