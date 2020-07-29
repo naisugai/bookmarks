@@ -24,7 +24,7 @@ class BookmarksController < ApplicationController
   # POST /bookmarks
   # POST /bookmarks.json
   def create
-    @bookmark = Bookmark.new(bookmark_params)
+    @bookmark = Bookmark.new(processed_params)
 
     respond_to do |format|
       if @bookmark.save
@@ -41,7 +41,8 @@ class BookmarksController < ApplicationController
   # PATCH/PUT /bookmarks/1.json
   def update
     respond_to do |format|
-      if @bookmark.update(bookmark_params)
+#      if @bookmark.update(bookmark_params)
+      if @bookmark.update(processed_params)
         format.html { redirect_to @bookmark, notice: 'Bookmark was successfully updated.' }
         format.json { render :show, status: :ok, location: @bookmark }
       else
@@ -67,8 +68,13 @@ class BookmarksController < ApplicationController
       @bookmark = Bookmark.find(params[:id])
     end
 
+    def processed_params
+      attrs = bookmark_params.to_h
+      attrs
+    end
+    
     # Only allow a list of trusted parameters through.
     def bookmark_params
-      params.require(:bookmark).permit(:url, :title, :check, :radio)
+      params.require(:bookmark).permit(:url, :title, :check,  :facilities, :radio)
     end
 end

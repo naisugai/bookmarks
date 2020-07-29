@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_17_011626) do
+ActiveRecord::Schema.define(version: 2020_07_29_070916) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.string "url"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2020_07_17_011626) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "check"
     t.string "radio"
+    t.string "checksome"
+    t.string "facilities"
   end
 
 end

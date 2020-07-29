@@ -26,7 +26,7 @@
   </div>
 
   <div class="field">
-    <%= form.label "テスト" %>
+    <%= form.label "テストa" %>
     <%= form.check_box :check %>
   </div>
 
@@ -35,5 +35,25 @@
       <%= form.label :ans, "わかる", {value: :true, style: "display: inline-block;"} %>
       <%= form.radio_button :radio, "わからない" %>
       <%= form.label :ans, "わからない", {value: :true, style: "display: inline-block;"} %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :facilities %><br>
+    <%
+      # デフォルトでチェックをつける項目
+      checked = @bookmark.facilities.presence || []
+
+      # 設備 ( 実際には定数 or DB格納すべきだが ... )
+      facilities = {1 => "駐車場あり", 2 => "個室あり", 3 => "クレジットカード可"}
+
+      # 設備の項目数ぶんループ
+      facilities.each do |key, value| 
+        checkedval = checked.include?(key) ? true : false
+        concat form.check_box :facilities, { multiple: true, checked: checkedval }, key, nil
+        concat value
+        concat " "
+      end
+    %>
   </div>
 <% end %>
