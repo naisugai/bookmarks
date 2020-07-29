@@ -34,6 +34,7 @@ class BookmarksController < ApplicationController
         format.html { render :new }
         format.json { render json: @bookmark.errors, status: :unprocessable_entity }
       end
+      
     end
   end
 
